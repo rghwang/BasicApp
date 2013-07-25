@@ -1,6 +1,8 @@
 ﻿BasicApp
 ========
 
+스토어에 앱을 몇번 올려보니 정작 앱 기능 구현이 어느 정도 되도 스토어 인증 기준에 맞추기 위해 마지막에 꼭 해야 하는 귀찮은 작업들이 여럿 있더라고요.(스냅뷰 추가, 개인보호 정책 추가 등) 그래서 기본 템플릿 앱에 해당 부분들을 추가해서 새로운 템플릿을 만들어 봤습니다. 오픈소스로 업데이트를 진행할 계획이라 필요한 기능 및 버그가 있으면 얼마든지 의견 및 Pull Request 보내주세요.
+
 구현된 기능
 - Add Basic References - Microsoft Ad SDK(http://go.microsoft.com/?linkid=9815330), Callisto Extenstion(http://visualstudiogallery.msdn.microsoft.com/0526563b-7a48-4b17-a087-a35cea701052) 설치 및 레퍼런스 등록 필요
 - Privacy Policy Link - App.xaml.cs에서 실제 웹페이지로 URL 수정 필요
