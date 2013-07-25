@@ -1,0 +1,25 @@
+﻿<Application
+    x:Class="BasicApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BasicApp"
+    RequestedTheme="Light"
+    xmlns:localData="using:BasicApp.Data">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- 
+                    플랫폼 모양 및 느낌의 일반적인 측면을 정의하는 스타일입니다.
+                    Visual Studio 프로젝트 및 항목 템플릿에 필요합니다.
+                 -->
+                <ResourceDictionary Source="Common/StandardStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- 응용 프로그램 관련 리소스 -->
+
+            <x:String x:Key="AppName">My App(AppName in App.xaml.cs)</x:String>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
