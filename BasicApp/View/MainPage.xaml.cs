@@ -14,16 +14,18 @@ using Windows.UI.Xaml.Navigation;
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
 
-namespace BasicApp.View
+namespace BasicApp.Common
 {
     /// <summary>
     /// 대부분의 응용 프로그램에 공통되는 특성을 제공하는 기본 페이지입니다.
     /// </summary>
     public sealed partial class MainPage : BasicApp.Common.LayoutAwarePage
     {
+        Windows.UI.Core.CoreDispatcher dispatcher;
         public MainPage()
         {
             this.InitializeComponent();
+            dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
         }
 
         /// <summary>
@@ -37,6 +39,12 @@ namespace BasicApp.View
         /// 사전 상태입니다. 페이지를 처음 방문할 때는 이 값이 null입니다.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
+            App.licenseInformation.LicenseChanged += licenseInformation_LicenseChanged;
+        }
+
+        void licenseInformation_LicenseChanged()
+        {
+            if (!App.licenseInformation.IsTrial) dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, RemoveAd);
         }
 
         /// <summary>
@@ -48,6 +56,10 @@ namespace BasicApp.View
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
         }
-
+        void RemoveAd()
+        {
+            BottomAd.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            AdRow.Height = new GridLength(0);
+        }
     }
 }

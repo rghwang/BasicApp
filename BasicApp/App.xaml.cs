@@ -1,5 +1,5 @@
 ﻿using BasicApp.Common;
-using BasicApp.View;
+using BasicApp.Common;
 using Callisto.Controls;
 using System;
 using System.Collections.Generic;
@@ -70,6 +70,23 @@ namespace BasicApp
         /// <param name="args">시작 요청 및 프로세스에 대한 정보입니다.</param>
         protected override async void OnLaunched(LaunchActivatedEventArgs args)
         {
+            // 설정 메뉴 초기화
+            SettingsPane.GetForCurrentView().CommandsRequested += SettingPane_CommandsRequested;
+
+            // 구매 기능 시뮬레이터 초기화
+            if (typeof(CurrentAppProxy) == typeof(CurrentAppSimulator))
+            {
+                var file = await Package.Current.InstalledLocation.GetFileAsync(STORE_PROXY_FILENAME);
+                await CurrentAppSimulator.ReloadSimulatorAsync(file);
+                licenseInformation = CurrentAppProxy.LicenseInformation;
+                listingInformation = await CurrentAppProxy.LoadListingInformationAsync();
+            }
+            else
+            {
+                licenseInformation = CurrentApp.LicenseInformation;
+                listingInformation = await CurrentApp.LoadListingInformationAsync();
+            }
+            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // 창에 콘텐츠가 이미 있는 경우 앱 초기화를 반복하지 말고,
@@ -111,18 +128,6 @@ namespace BasicApp
             }
             // 현재 창이 활성 창인지 확인
             Window.Current.Activate();
-            
-            // 설정 메뉴 초기화
-            SettingsPane.GetForCurrentView().CommandsRequested +=SettingPane_CommandsRequested;
-
-            // 구매 기능 시뮬레이터 초기화
-            if (typeof(CurrentAppProxy) == typeof(CurrentAppSimulator))
-            {
-                var file = await Package.Current.InstalledLocation.GetFileAsync(STORE_PROXY_FILENAME);
-                await CurrentAppSimulator.ReloadSimulatorAsync(file);
-                licenseInformation = CurrentAppProxy.LicenseInformation;
-                listingInformation = await CurrentAppProxy.LoadListingInformationAsync();
-            }
         }
         internal static LicenseInformation licenseInformation;
         internal static ListingInformation listingInformation;

@@ -1,4 +1,4 @@
-﻿using BasicApp.View;
+﻿using BasicApp.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

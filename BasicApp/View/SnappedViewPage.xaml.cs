@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
 
-namespace BasicApp.View
+namespace BasicApp.Common
 {
     /// <summary>
     /// 대부분의 응용 프로그램에 공통되는 특성을 제공하는 기본 페이지입니다.

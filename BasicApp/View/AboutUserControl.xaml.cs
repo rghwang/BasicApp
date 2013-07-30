@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicApp.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // 사용자 정의 컨트롤 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234236에 나와 있습니다.
 
-namespace BasicApp.View
+namespace BasicApp.Common
 {
     public sealed partial class AboutUserControl : UserControl
     {
@@ -42,7 +43,6 @@ namespace BasicApp.View
         private void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             App.PurchaseApp();
-            UpdateVersionInfo();
         }
     }
 }

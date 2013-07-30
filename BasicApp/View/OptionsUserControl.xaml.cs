@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Navigation;
 
 // 사용자 정의 컨트롤 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234236에 나와 있습니다.
 
-namespace BasicApp.View
+namespace BasicApp.Common
 {
     public sealed partial class OptionsUserControl : UserControl
     {
