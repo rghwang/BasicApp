@@ -42,21 +42,24 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
-                <!-- 컨텐츠 영역 -->
-                <StackPanel>
-                    <TextBlock Text="스토어 등록 전 체크사항" FontFamily="Global User Interface" Style="{StaticResource PageSubheaderTextStyle}"></TextBlock>
-                    <CheckBox Content="Add Basic References - Microsoft Ad SDK, Callisto Extenstion 설치 및 추가" IsChecked="False"></CheckBox>
-                    <CheckBox Content="Privacy Policy Link - App.xaml.cs에서 실제 웹페이지로 URL 수정 필요" IsChecked="False"></CheckBox>
-                    <CheckBox Content="Microsoft Advertising AdControl - http://pubcenter.microsoft.com에서 계정 등록, MainPage.xaml에서 ApplicationId 및 AdUnitId 수정 필요" IsChecked="False"></CheckBox>
-                    <CheckBox Content="Trial Version 표시 및 구매 - App.xaml.cs에서 CurrentAppProxy 변경" IsChecked="False"></CheckBox>
-                    <CheckBox Content="Tile Images" IsChecked="True" IsEnabled="False"></CheckBox>
-                    <CheckBox Content="Snapped View" IsChecked="True" IsEnabled="False"></CheckBox>
-                    <CheckBox Content="Language Resources" IsChecked="True" IsEnabled="False"></CheckBox>
-                    <CheckBox Content="About Page" IsChecked="True" IsEnabled="False"></CheckBox>
-                    <CheckBox Content="Options Page" IsChecked="True" IsEnabled="False"></CheckBox>
-                </StackPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                </Grid.ColumnDefinitions>
+                <GridView/>
+                <AdUI:AdControl 
+            x:Name="RightAd"
+            Grid.Row="2"
+            Grid.Column="3"
+            ApplicationId="d25517cb-12d4-4699-8bdc-52040c712cab" 
+            AdUnitId="10043135" 
+            Height="600" 
+            Margin="0,0,0,0" 
+            VerticalAlignment="Top" 
+            Width="160"/>
+                
             </Grid>
-            
+
         </Grid>
         <AdUI:AdControl 
             x:Name="BottomAd"
