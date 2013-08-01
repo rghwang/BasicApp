@@ -58,6 +58,7 @@
                     <CheckBox Content="Language Resources" IsChecked="True" IsEnabled="False"></CheckBox>
                     <CheckBox Content="About Page" IsChecked="True" IsEnabled="False"></CheckBox>
                     <CheckBox Content="Options Page" IsChecked="True" IsEnabled="False"></CheckBox>
+                    <Button Content="광고 샘플 페이지" Click="Button_Click"/>
                 </StackPanel>
                 <AdUI:AdControl 
             x:Name="RightAd"

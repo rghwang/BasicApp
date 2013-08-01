@@ -1,5 +1,4 @@
-﻿using BasicApp.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,18 +14,16 @@ using Windows.UI.Xaml.Navigation;
 
 // 기본 페이지 항목 템플릿에 대한 설명은 http://go.microsoft.com/fwlink/?LinkId=234237에 나와 있습니다.
 
-namespace BasicApp.Common
+namespace BasicApp.View
 {
     /// <summary>
     /// 대부분의 응용 프로그램에 공통되는 특성을 제공하는 기본 페이지입니다.
     /// </summary>
-    public sealed partial class MainPage : BasicApp.Common.LayoutAwarePage
+    public sealed partial class AdSamples : BasicApp.Common.LayoutAwarePage
     {
-        Windows.UI.Core.CoreDispatcher dispatcher;
-        public MainPage()
+        public AdSamples()
         {
             this.InitializeComponent();
-            dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
         }
 
         /// <summary>
@@ -40,12 +37,6 @@ namespace BasicApp.Common
         /// 사전 상태입니다. 페이지를 처음 방문할 때는 이 값이 null입니다.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
-            App.licenseInformation.LicenseChanged += licenseInformation_LicenseChanged;
-        }
-
-        void licenseInformation_LicenseChanged()
-        {
-            if (!App.licenseInformation.IsTrial) dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, RemoveAd);
         }
 
         /// <summary>
@@ -56,18 +47,6 @@ namespace BasicApp.Common
         /// <param name="pageState">serializable 상태로 채워질 빈 사전입니다.</param>
         protected override void SaveState(Dictionary<String, Object> pageState)
         {
-        }
-        void RemoveAd()
-        {
-            RightAd.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            AdCol.Width = new GridLength(0);
-            BottomAd.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-            AdRow.Height = new GridLength(0);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AdSamples));
         }
     }
 }
