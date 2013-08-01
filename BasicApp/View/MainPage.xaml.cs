@@ -58,6 +58,8 @@ namespace BasicApp.Common
         }
         void RemoveAd()
         {
+            RightAd.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+            AdCol.Width = new GridLength(0);
             BottomAd.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             AdRow.Height = new GridLength(0);
         }
