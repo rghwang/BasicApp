@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Windows.Data.Xml.Dom;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +29,19 @@ namespace BasicApp.Common
         {
             this.InitializeComponent();
             dispatcher = Windows.UI.Core.CoreWindow.GetForCurrentThread().Dispatcher;
+
+            loadSettings();
+
+        }
+
+        private async void loadSettings()
+        {
+            Uri SettingsUri = new Uri("ms-appx:///Settings/settings.xml");
+            StorageFile SettingsFile = await StorageFile.GetFileFromApplicationUriAsync(SettingsUri);
+            var SettingsXml = await XmlDocument.LoadFromFileAsync(SettingsFile);
+
+            var result = SettingsXml.SelectSingleNode("url");
+            mainWebView.Navigate(new Uri(result.FirstChild.NodeValue.ToString()));
         }
 
         /// <summary>
